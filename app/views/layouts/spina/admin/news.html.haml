@@ -1,0 +1,29 @@
+- content_for(:permanent_notice) do
+  - unless current_account.robots_allowed?
+    .permanent-notice.permanent-notice-info
+      = icon('search')
+      %p
+        =t 'spina.pages.invisible_to_search_engines'
+        %small=t 'spina.pages.invisible_to_search_engines_description'
+
+- content_for :application do
+  %header#header
+    #header_actions
+      = yield(:header_actions) if content_for?(:header_actions)
+
+    .breadcrumbs= render_breadcrumbs separator: '<div class="divider"></div>'
+
+    %nav#secondary.tabs
+      %ul
+        %li{class: ('active' if controller_name == 'articles' and action_name == 'index')}
+          = link_to t('spina.news.articles.all_articles'), spina.admin_news_articles_path
+        %li{class: ('active' if controller_name == 'articles' and action_name == 'live')}
+          = link_to t('spina.news.articles.live_articles'), spina.live_admin_news_articles_path
+        %li{class: ('active' if controller_name == 'articles' and action_name == 'draft')}
+          = link_to t('spina.news.articles.draft_articles'), spina.draft_admin_news_articles_path
+        %li{class: ('active' if controller_name == 'articles' and action_name == 'future')}
+          = link_to t('spina.news.articles.scheduled_articles'), spina.future_admin_news_articles_path
+
+  = yield
+
+= render template: "layouts/spina/admin/admin"

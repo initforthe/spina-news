@@ -1,0 +1,30 @@
+en:
+  spina:
+    view: View
+
+    news:
+      title: News
+
+      articles:
+        title: Articles
+        new: New Article
+        save: Save article
+        saving: Saving...
+        saved: Article saved
+        post_content: Content
+        post_configuration: Settings
+        concept: Draft
+
+  activerecord:
+    attributes:
+      spina/news/article:
+        title: Article title
+        title_placeholder: Article title
+        content: Article content
+        draft: Draft
+        draft_description: Great for when your article is not quite finished
+        published_at: Publishing date/time
+        slug: Permalink
+        slug_description: Permalink URL for this article
+        excerpt: Excerpt
+        spina_user: Author

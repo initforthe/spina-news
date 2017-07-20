@@ -1,0 +1,19 @@
+%tr{data: { id: article.id }}
+  %td.nowrap
+    %h3= link_to article.title, spina.edit_admin_news_article_path(article.id)
+    %small #{time_ago_in_words(article.created_at)} ago
+    .labels
+      - if article.draft?
+        %span.label.label-info= t('spina.news.articles.concept')
+      - if article.published_at and article.published_at > Time.now
+        %span.label.label-default
+          Will be published on #{article.decorate.published_date}
+
+  %td.nowrap.text-right
+    = link_to spina.news_article_path(article), class: 'button button-small button-link dd-nodrag', target: '_blank' do
+      = icon 'eye'
+      = t('spina.view')
+
+    = link_to spina.edit_admin_news_article_path(article.id), class: 'button button-link' do
+      = icon 'pencil-outline'
+      = t('spina.news.articles.edit')

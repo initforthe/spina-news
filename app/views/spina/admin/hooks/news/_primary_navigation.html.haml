@@ -1,0 +1,8 @@
+%li{class: ('active' if (current_admin_path.start_with?('/news')))}
+  = link_to admin_news_articles_path do
+    = icon 'megaphone'
+    = t('spina.news.title')
+    = icon 'caret-right'
+  %ul
+    %li{class: ('active' if current_admin_path.start_with?('/news/articles'))}
+      = link_to t('spina.news.articles.title'), admin_news_articles_path

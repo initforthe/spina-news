@@ -1,0 +1,23 @@
+- content_for :header_actions do
+  %span
+    = link_to spina.new_admin_news_article_path, class: 'button button-primary', style: 'margin-right: 0' do
+      = icon 'plus'
+      = t 'spina.news.articles.new'
+
+
+
+.table-container
+  %table.table
+    %thead
+      %tr
+        %th Article Title
+        %th
+
+    %tbody
+      - if @articles.any?
+        = render partial: 'article', collection: @articles, as: :article
+
+      - else
+        %tr
+          %td.align-center{colspan: 2}
+            %em There are no articles yet. Create your first one!
